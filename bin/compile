@@ -244,7 +244,7 @@ source "${BUILDPACK_DIR}/bin/steps/pip-install"
 # Additional pip install for requirements.txt
 if [[ -f requirements.txt ]]; then
   echo "Installing dependencies from requirements.txt..."
-  pip install -r requirements.txt
+  pip install fastapi uvicorn pydantic_settings pandas scikit-learn sentence-transformers
 fi
 
 # Support for NLTK corpora.
