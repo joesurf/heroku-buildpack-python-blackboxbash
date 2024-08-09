@@ -241,6 +241,12 @@ meta_time "sqlite_install_duration" "${install_sqlite_start_time}"
 # Install dependencies with pip (where the magic happens).
 source "${BUILDPACK_DIR}/bin/steps/pip-install"
 
+# Additional pip install for requirements.txt
+if [[ -f requirements.txt ]]; then
+  echo "Installing dependencies from requirements.txt..."
+  pip install -r requirements.txt
+fi
+
 # Support for NLTK corpora.
 nltk_downloader_start_time=$(nowms)
 sub_env "${BUILDPACK_DIR}/bin/steps/nltk"
